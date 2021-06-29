@@ -1,0 +1,3 @@
+rootProject.name = "ZebraProgressBar"
+include ':app'
+include ':zebra_progress_bar'
