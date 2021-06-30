@@ -103,6 +103,11 @@ open class ZebraProgressBar @JvmOverloads constructor(
         mRectF.set(borderSize, borderSize, width - borderSize, height - borderSize)
         canvas.drawRoundRect(mRectF, radius, radius, mPaint)
 
+        //裁剪进度的形状
+        mPath.addRoundRect(mRectF, radius, radius, Path.Direction.CCW)
+        canvas.save()
+        canvas.clipPath(mPath)
+
         //画进度
         if (progress <= 0) return
         mPaint.color = progressColor
@@ -112,22 +117,18 @@ open class ZebraProgressBar @JvmOverloads constructor(
 
         //画条纹
         mPaint.color = zebraColor
-        mPath.addRoundRect(mRectF, radius, radius, Path.Direction.CW)
-        canvas.save()
-        canvas.clipPath(mPath)
-
         val zebraNum = (progressWidth / (zebraSize + zebraGap)).toInt()
 
         val top = borderSize
         var topLeft = 0f
         var topRight = 0f
 
-        var bottom = height - borderSize
+        val bottom = height - borderSize
         var bottomLeft = 0f
         var bottomRight = 0f
 
         for (n in 0..zebraNum) {
-            topLeft = n * (zebraSize + zebraGap)
+            topLeft = n * (zebraSize + zebraGap) + borderSize
             topRight = topLeft + zebraSize
             bottomLeft = topLeft - zebraSize
             bottomRight = bottomLeft + zebraSize

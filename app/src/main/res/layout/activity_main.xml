@@ -14,13 +14,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <me.simple.view.ZebraProgressBar
-            android:id="@+id/pb1"
+            android:id="@+id/zpb1"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:zpb_progress="50" />
 
         <me.simple.view.ZebraProgressBar
+            android:id="@+id/zpb2"
             android:layout_width="match_parent"
             android:layout_height="14dp"
             android:layout_marginTop="15dp"
@@ -37,7 +38,7 @@
             app:zpb_bgColor="#f73378"
             app:zpb_borderColor="#ab003c"
             app:zpb_borderSize="2dp"
-            app:zpb_progress="80"
+            app:zpb_progress="85"
             app:zpb_progressColor="@android:color/white"
             app:zpb_radius="9dp"
             app:zpb_zebraColor="#f50057"

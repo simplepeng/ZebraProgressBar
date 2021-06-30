@@ -9,6 +9,9 @@ import me.simple.view.ZebraProgressBar
 class MainActivity : AppCompatActivity() {
 
     private val btnStart by lazy { findViewById<Button>(R.id.btnStart) }
+
+    private val zpb1 by lazy { findViewById<ZebraProgressBar>(R.id.zpb1) }
+    private val zpb2 by lazy { findViewById<ZebraProgressBar>(R.id.zpb2) }
     private val zpb3 by lazy { findViewById<ZebraProgressBar>(R.id.zpb3) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +24,9 @@ class MainActivity : AppCompatActivity() {
             }
             animator.addUpdateListener {
                 val value = it.animatedValue as Int
+
+                zpb1.progress = value
+                zpb2.progress = value
                 zpb3.progress = value
             }
             animator.start()
