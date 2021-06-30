@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ZebraProgressBar">
+        <!--    最大进度    -->
         <attr name="zpb_max" format="integer" />
+        <!--    当前进度    -->
         <attr name="zpb_progress" format="integer" />
+        <!--    圆角大小    -->
         <attr name="zpb_radius" format="dimension" />
-
+        <!--    描边颜色    -->
         <attr name="zpb_borderColor" format="color|reference" />
+        <!--    描边大小    -->
         <attr name="zpb_borderSize" format="dimension" />
-
+        <!--    背景颜色    -->
         <attr name="zpb_bgColor" format="color|reference" />
+        <!--    进度颜色    -->
         <attr name="zpb_progressColor" format="color|reference" />
-
+        <!--    条纹颜色    -->
         <attr name="zpb_zebraColor" format="color|reference" />
+        <!--    条纹大小    -->
         <attr name="zpb_zebraSize" format="dimension" />
+        <!--    条纹间距    -->
         <attr name="zpb_zebraGap" format="dimension" />
     </declare-styleable>
 </resources>
