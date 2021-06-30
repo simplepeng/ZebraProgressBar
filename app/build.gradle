@@ -42,5 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //
-    implementation project(path: ':zebra_progress_bar')
+//    implementation project(path: ':zebra_progress_bar')
+    implementation 'com.github.simplepeng:ZebraProgressBar:v1.0.0'
 }

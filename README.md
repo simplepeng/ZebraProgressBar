@@ -6,6 +6,21 @@
 
 ## 导入
 
+```groovy
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
+```groovy
+dependencies {
+        implementation 'com.github.simplepeng:ZebraProgressBar:v1.0.0'
+}
+```
+
 ## 使用
 
 ```xml
