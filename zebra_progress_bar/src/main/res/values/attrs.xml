@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ZebraProgressBar">
+        <attr name="zpb_max" format="integer" />
+        <attr name="zpb_progress" format="integer" />
+        <attr name="zpb_radius" format="dimension" />
+
+        <attr name="zpb_borderColor" format="color|reference" />
+        <attr name="zpb_borderSize" format="dimension" />
+
+        <attr name="zpb_bgColor" format="color|reference" />
+        <attr name="zpb_progressColor" format="color|reference" />
+
+        <attr name="zpb_zebraColor" format="color|reference" />
+        <attr name="zpb_zebraSize" format="dimension" />
+        <attr name="zpb_zebraGap" format="dimension" />
+    </declare-styleable>
+</resources>

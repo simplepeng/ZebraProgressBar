@@ -7,10 +7,51 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
-    <me.simple.view.ZebraProgressBar
-        android:id="@+id/pb1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <me.simple.view.ZebraProgressBar
+            android:id="@+id/pb1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:zpb_progress="50" />
+
+        <me.simple.view.ZebraProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:zpb_progress="70"
+            app:zpb_radius="7dp" />
+
+        <me.simple.view.ZebraProgressBar
+            android:id="@+id/zpb3"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:zpb_bgColor="#f73378"
+            app:zpb_borderColor="#ab003c"
+            app:zpb_borderSize="2dp"
+            app:zpb_progress="80"
+            app:zpb_progressColor="@android:color/white"
+            app:zpb_radius="9dp"
+            app:zpb_zebraColor="#f50057"
+            app:zpb_zebraGap="4dp"
+            app:zpb_zebraSize="4dp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="start" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

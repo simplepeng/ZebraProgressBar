@@ -6,7 +6,10 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 
-class ZebraProgressBar @JvmOverloads constructor(
+/**
+ * 条纹进度条
+ */
+open class ZebraProgressBar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -22,23 +25,23 @@ class ZebraProgressBar @JvmOverloads constructor(
     var max = 100
 
     //进度
-    var progress = 50
+    var progress = 0
         set(value) {
             field = if (progress > max) max else value
             invalidate()
         }
 
     //进度条的圆角
-    var radius = dp2px(5f)
+    var radius = 0f
 
     //进度条描边的颜色
     var borderColor = Color.GREEN
 
+    //进度条描边的大小
+    var borderSize = 0f
+
     //进度条背景的颜色
     var bgColor = Color.BLACK
-
-    //进度条描边的大小
-    var borderSize = dp2px(1f)
 
     //进度条进度的颜色
     var progressColor = Color.RED
@@ -47,10 +50,45 @@ class ZebraProgressBar @JvmOverloads constructor(
     var zebraColor = Color.YELLOW
 
     //条纹的间隔
-    var zebraSize = dp2px(10f)
+    var zebraSize = 0f
 
     //条纹的间隔
-    var zebraGap = dp2px(10f)
+    var zebraGap = 0f
+
+    init {
+        if (attrs != null) {
+            val ta = context.obtainStyledAttributes(attrs, R.styleable.ZebraProgressBar)
+
+            max = ta.getInt(R.styleable.ZebraProgressBar_zpb_max, 100)
+            progress = ta.getInt(R.styleable.ZebraProgressBar_zpb_progress, 0)
+            radius = ta.getDimension(R.styleable.ZebraProgressBar_zpb_radius, 0f)
+
+            borderColor = ta.getColor(
+                R.styleable.ZebraProgressBar_zpb_borderColor,
+                Color.parseColor("#FEC572")
+            )
+            borderSize = ta.getDimension(R.styleable.ZebraProgressBar_zpb_borderSize, dp2px(1f))
+
+            bgColor = ta.getColor(
+                R.styleable.ZebraProgressBar_zpb_bgColor,
+                Color.parseColor("#FFD47F")
+            )
+
+            progressColor = ta.getColor(
+                R.styleable.ZebraProgressBar_zpb_progressColor,
+                Color.parseColor("#FFF7E0")
+            )
+
+            zebraColor = ta.getColor(
+                R.styleable.ZebraProgressBar_zpb_zebraColor,
+                Color.parseColor("#FFD47F")
+            )
+            zebraSize = ta.getDimension(R.styleable.ZebraProgressBar_zpb_zebraSize, dp2px(10f))
+            zebraGap = ta.getDimension(R.styleable.ZebraProgressBar_zpb_zebraGap, dp2px(10f))
+
+            ta.recycle()
+        }
+    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -75,6 +113,7 @@ class ZebraProgressBar @JvmOverloads constructor(
         //画条纹
         mPaint.color = zebraColor
         mPath.addRoundRect(mRectF, radius, radius, Path.Direction.CW)
+        canvas.save()
         canvas.clipPath(mPath)
 
         val zebraNum = (progressWidth / (zebraSize + zebraGap)).toInt()
@@ -102,6 +141,8 @@ class ZebraProgressBar @JvmOverloads constructor(
 
             canvas.drawPath(mZebraPath, mPaint)
         }
+
+        canvas.restore()
     }
 
     private fun dp2px(value: Float): Float {
